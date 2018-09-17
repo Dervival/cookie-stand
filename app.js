@@ -7,17 +7,31 @@ var pikeStore = {
   avgCust: 6.3,
   salesData: [],
   totalSales: 0,
-  generateSalesData: function() {
-    console.log('Generating sales data for ' + this.storeName);
-    for(var i = 0; i < hoursOpen.length; i++){
-      let custFloor = this.minCust;
-      let custRange = this.maxCust - custFloor;
-      let hourlySales = (custFloor + Math.floor( custRange*Math.random()) );
-      console.log(hourlySales);
-      this.salesData.push(hourlySales);
-    }
-  }
+  generateSales: generateSalesData
 };
 
-pikeStore.generateSalesData();
+function generateSalesData() {
+  console.log('Generating sales data for ' + this.storeName);
+  //let debugAccum = 0;
+  for(var i = 0; i < hoursOpen.length; i++){
+    let custFloor = this.minCust;
+    let custRange = this.maxCust - custFloor;
+    let hourlySales = (custFloor + Math.floor( custRange*Math.random()) );
+    console.log(hourlySales);
+    this.salesData.push(hourlySales);
+    //debugAccum += hourlySales;
+  }
+  //console.log(debugAccum + ' sales for the day');
+}
+
+function generateTotalSales(salesArray) {
+  let salesAccum = 0;
+  for(var i = 0; i < salesArray.length; i++){
+    salesAccum += salesArray[i];
+  }
+  return salesAccum;
+}
+
+pikeStore.generateSales();
+pikeStore.totalSales = generateTotalSales(pikeStore.salesData);
 console.log(pikeStore);
