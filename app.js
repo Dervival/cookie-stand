@@ -1,5 +1,5 @@
 'use strict';
-var hoursOpen = ['6AM','7AM','8AM','9AM','10AM','11AM','12PM','1PM','2PM','3PM','4PM','5PM','6PM','7PM','8PM'];
+var hoursOpen = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
 var storeNames = ['1st and Pike', 'SeaTac Airport', 'Seattle Center', 'Capitol Hill', 'Alki'];
 
 var pikeStore = {
@@ -36,16 +36,16 @@ var seatCentStore = {
   totalSales: 0,
   generateSales: generateSalesData,
   writeData: writeToPage
-}
+};
 
 function generateSalesData() {
-  console.log('Generating sales data for ' + this.storeName);
+  console.log(`Generating sales data for ${this.storeName}`);
   //let debugAccum = 0;
   for(var i = 0; i < hoursOpen.length; i++){
     let custFloor = this.minCust;
     let custRange = this.maxCust - custFloor;
-    let hourlySales = Math.floor((custFloor + Math.floor( custRange*Math.random()) )*this.avgSale);
-    console.log('Sales for ' + hoursOpen[i] + ': ' + hourlySales);
+    let hourlySales = Math.floor((custFloor + ( custRange*Math.random() ) )*this.avgSale);
+    console.log(`Sales for ${hoursOpen[i]}: ${hourlySales}`);
     this.salesData.push(hourlySales);
     //debugAccum += hourlySales;
   }
@@ -75,7 +75,7 @@ function writeToPage(){
 }
 function appendUlElement(hour, cookies, nodeHead){
   let unordListEl = document.createElement('li');
-  let unordListElText = hour + ': ' + cookies + ' cookies';
+  let unordListElText = `${hour}: ${cookies} cookies`;
   unordListEl.appendChild(document.createTextNode(unordListElText));
   nodeHead.appendChild(unordListEl);
 }
