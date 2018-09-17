@@ -7,7 +7,8 @@ var pikeStore = {
   avgCust: 6.3,
   salesData: [],
   totalSales: 0,
-  generateSales: generateSalesData
+  generateSales: generateSalesData,
+  writeData: writeToPage
 };
 
 function generateSalesData() {
@@ -32,6 +33,42 @@ function generateTotalSales(salesArray) {
   return salesAccum;
 }
 
+function writeToPage(){
+  var headerNode = document.createElement('p');
+  headerNode.id = this.storeName;
+  var headerText = document.createTextNode(this.storeName);
+  headerNode.appendChild(headerText);
+  //document.body.insertAdjacentElement('beforeend',headerNode);
+  document.body.appendChild(headerNode);
+  var unordListNode = document.createElement('ul');
+  //document.body.headerNode.appendChild(unordListNode);
+  document.body.appendChild(unordListNode);
+  //var unordListEl;
+  //var unordListElText;
+  for(var i = 0; i < this.salesData.length; i++){
+    appendUlElement(hoursOpen[i], this.salesData[i], unordListNode);
+    //unordListEl = document.createElement('li');
+    //unordListElText = hoursOpen[i] + ': ' + this.salesData[i] + ' cookies';
+    //unordListEl.appendChild(document.createTextNode(unordListElText));
+    //unordListNode.appendChild(unordListEl);
+  }
+  //unordListEl = document.createElement('li');
+  //unordListElText = 'Total: ' + this.totalSales + ' cookies';
+  appendUlElement('Total', this.totalSales, unordListNode);
+}
+function appendUlElement(hour, cookies, nodeHead){
+  let unordListEl = document.createElement('li');
+  let unordListElText = hour + ': ' + cookies + ' cookies';
+  unordListEl.appendChild(document.createTextNode(unordListElText));
+  nodeHead.appendChild(unordListEl);
+}
 pikeStore.generateSales();
 pikeStore.totalSales = generateTotalSales(pikeStore.salesData);
-console.log(pikeStore);
+pikeStore.writeData();
+
+// var testElement = document.createElement('h1');
+// var testElementContent = document.createTextNode(pikeStore.storeName);
+// testElement.appendChild(testElementContent);
+// document.body.insertAdjacentElement('afterend',testElement);
+
+//console.log(pikeStore);
