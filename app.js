@@ -38,6 +38,28 @@ var seatCentStore = {
   writeData: writeToPage
 };
 
+var capHillStore = {
+  storeName: storeNames[3],
+  minCust: 20,
+  maxCust: 38,
+  avgSale: 2.3,
+  salesData: [],
+  totalSales: 0,
+  generateSales: generateSalesData,
+  writeData: writeToPage
+};
+
+var alkiStore = {
+  storeName: storeNames[4],
+  minCust: 2,
+  maxCust: 16,
+  avgSale: 4.6,
+  salesData: [],
+  totalSales: 0,
+  generateSales: generateSalesData,
+  writeData: writeToPage
+};
+
 function generateSalesData() {
   console.log(`Generating sales data for ${this.storeName}`);
   //let debugAccum = 0;
@@ -92,9 +114,10 @@ seatCentStore.generateSales();
 seatCentStore.totalSales = generateTotalSales(seatCentStore.salesData);
 seatCentStore.writeData();
 
-// var testElement = document.createElement('h1');
-// var testElementContent = document.createTextNode(pikeStore.storeName);
-// testElement.appendChild(testElementContent);
-// document.body.insertAdjacentElement('afterend',testElement);
+capHillStore.generateSales();
+capHillStore.totalSales = generateTotalSales(capHillStore.salesData);
+capHillStore.writeData();
 
-//console.log(pikeStore);
+alkiStore.generateSales();
+alkiStore.totalSales = generateTotalSales(alkiStore.salesData);
+alkiStore.writeData();
