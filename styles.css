@@ -1,0 +1,21 @@
+table, thead, tbody, tr, th, td{
+  align-content: center;
+}
+th.headerColumnCell{
+  background: transparent;
+}
+th.arrayColumnCell{
+  background: green;
+}
+th.totalColumnCell{
+  background: orangered;
+}
+td.headerColumnCell{
+  background: pink;
+}
+td.arrayColumnCell{
+  background: lightgreen;
+}
+td.totalColumnCell{
+  background: orange;
+}

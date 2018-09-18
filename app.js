@@ -63,7 +63,7 @@ function appendUlElement(hour, cookies, nodeHead){
   nodeHead.appendChild(unordListEl);
 }
 
-function writeTableAtTop(){
+function writeSalesTableAtTop(){
   //initial setup of table, thead, tr tags
   var elementParent;
   var tableNode = document.createElement('table');
@@ -71,6 +71,7 @@ function writeTableAtTop(){
   document.body.appendChild(tableNode);
   //thead
   elementParent = document.getElementById('salesTable');
+  console.log(elementParent);
   var tableHeaderNode = document.createElement('thead');
   tableHeaderNode.id = 'salesTableHeader';
   elementParent.appendChild(tableHeaderNode);
@@ -98,19 +99,27 @@ function writeTableAtTop(){
 }
 
 function writeTableRow(tableRowTarg, initElement, arrayContent, finElement, rowType){
+  //Row can be split into three distinct areas - header column, hourly sales, total sales
+  //inital setup and writing the cell in the header column
   let elementRowParent = tableRowTarg;
   let tableCellNode = document.createElement(rowType);
   let tableCellContent = document.createTextNode(initElement);
+  tableCellNode.classList.add('headerColumnCell');
+  //console.log(tableCellNode, tableCellContent);
   tableCellNode.appendChild(tableCellContent);
   elementRowParent.appendChild(tableCellNode);
+  //writing to cells in the hourly sales columns
   for(var colNum = 0; colNum < arrayContent.length; colNum++){
     tableCellNode = document.createElement(rowType);
     tableCellContent = document.createTextNode(arrayContent[colNum]);
+    tableCellNode.classList.add('arrayColumnCell');
     tableCellNode.appendChild(tableCellContent);
     elementRowParent.appendChild(tableCellNode);
   }
+  //writing to cells in the total sales column
   tableCellNode = document.createElement(rowType);
   tableCellContent = document.createTextNode(finElement);
+  tableCellNode.classList.add('totalColumnCell');
   tableCellNode.appendChild(tableCellContent);
   elementRowParent.appendChild(tableCellNode);
 }
@@ -125,7 +134,7 @@ for(var i = 0; i < Store.locations.length; i++){
   Store.locations[i].generateSalesData();
   //Store.locations[i].writeToPage();
 }
-writeTableAtTop();
+writeSalesTableAtTop();
 console.log(pikeStore);
 console.log(seatacStore);
 console.log(seatCentStore);
