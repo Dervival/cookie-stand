@@ -63,6 +63,58 @@ function appendUlElement(hour, cookies, nodeHead){
   nodeHead.appendChild(unordListEl);
 }
 
+function writeTableAtTop(){
+  //initial setup of table, thead, tr tags
+  var elementParent;
+  var tableNode = document.createElement('table');
+  tableNode.id = 'salesTable';
+  document.body.appendChild(tableNode);
+  //thead
+  elementParent = document.getElementById('salesTable');
+  var tableHeaderNode = document.createElement('thead');
+  tableHeaderNode.id = 'salesTableHeader';
+  elementParent.appendChild(tableHeaderNode);
+  //thead tr
+  var tableHeaderRowNode = document.createElement('tr');
+  tableHeaderRowNode.id = 'salesTableHeaderRow';
+  elementParent = document.getElementById('salesTableHeader');
+  elementParent.appendChild(tableHeaderRowNode);
+  //thead tr th
+  elementParent = document.getElementById('salesTableHeaderRow');
+  writeTableRow(elementParent, '', hoursOpen, 'Daily Location Total', 'th');
+  //tbody
+  var tableBodyNode = document.createElement('tbody');
+  tableBodyNode.id = 'salesTableBody';
+  elementParent = document.getElementById('salesTable');
+  elementParent.appendChild(tableBodyNode);
+  //tbody tr
+  var tableBodyRowNode;
+  for(var rowNum = 0; rowNum < Store.locations.length; rowNum++){
+    tableBodyRowNode = document.createElement('tr');
+    elementParent = document.getElementById('salesTableBody');
+    elementParent.appendChild(tableBodyRowNode);
+    writeTableRow(tableBodyRowNode, Store.locations[rowNum].storeName, Store.locations[rowNum].salesData, Store.locations[rowNum].totalSales, 'td');
+  }
+}
+
+function writeTableRow(tableRowTarg, initElement, arrayContent, finElement, rowType){
+  let elementRowParent = tableRowTarg;
+  let tableCellNode = document.createElement(rowType);
+  let tableCellContent = document.createTextNode(initElement);
+  tableCellNode.appendChild(tableCellContent);
+  elementRowParent.appendChild(tableCellNode);
+  for(var colNum = 0; colNum < arrayContent.length; colNum++){
+    tableCellNode = document.createElement(rowType);
+    tableCellContent = document.createTextNode(arrayContent[colNum]);
+    tableCellNode.appendChild(tableCellContent);
+    elementRowParent.appendChild(tableCellNode);
+  }
+  tableCellNode = document.createElement(rowType);
+  tableCellContent = document.createTextNode(finElement);
+  tableCellNode.appendChild(tableCellContent);
+  elementRowParent.appendChild(tableCellNode);
+}
+
 var pikeStore = new Store(storeNames[0],minCustArray[0],maxCustArray[0],avgSaleArray[0]);
 var seatacStore = new Store(storeNames[1],minCustArray[1],maxCustArray[1],avgSaleArray[1]);
 var seatCentStore = new Store(storeNames[2],minCustArray[2],maxCustArray[2],avgSaleArray[2]);
@@ -71,8 +123,9 @@ var alkiStore = new Store(storeNames[4],minCustArray[4],maxCustArray[4],avgSaleA
 for(var i = 0; i < Store.locations.length; i++){
   Store.locations[i].generateCustomerData();
   Store.locations[i].generateSalesData();
-  Store.locations[i].writeToPage();
+  //Store.locations[i].writeToPage();
 }
+writeTableAtTop();
 console.log(pikeStore);
 console.log(seatacStore);
 console.log(seatCentStore);
