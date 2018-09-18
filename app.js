@@ -96,6 +96,32 @@ function writeSalesTableAtTop(){
     elementParent.appendChild(tableBodyRowNode);
     writeTableRow(tableBodyRowNode, Store.locations[rowNum].storeName, Store.locations[rowNum].salesData, Store.locations[rowNum].totalSales, 'td');
   }
+  //tfoot
+  var tableFooterNode = document.createElement('tfoot');
+  tableFooterNode.id = 'salesTableFooter';
+  elementParent = document.getElementById('salesTable');
+  elementParent.appendChild(tableFooterNode);
+  //tfoot tr
+  var tableFooterRowNode = document.createElement('tr');
+  tableFooterRowNode.id = 'salesTableFooterRow';
+  elementParent = document.getElementById('salesTableFooter');
+  elementParent.appendChild(tableFooterRowNode);
+  //tfoot tr td - generate hour totals
+  var totalHourlyArray = [];
+  var hourAccum = 0;
+  var totalDailySales = 0;
+  for (var hours = 0; hours < hoursOpen.length; hours++){
+    hourAccum = 0;
+    for (var openStores = 0; openStores < Store.locations.length; openStores++){
+      hourAccum += Store.locations[openStores].salesData[hours];
+    }
+    totalHourlyArray.push(hourAccum);
+    totalDailySales += hourAccum;
+  }
+  //tfoot tr tf - write the totals
+  elementParent = document.getElementById('salesTableFooterRow');
+  writeTableRow(elementParent, 'Totals', totalHourlyArray, totalDailySales, 'td');
+
 }
 
 function writeTableRow(tableRowTarg, initElement, arrayContent, finElement, rowType){
@@ -105,7 +131,6 @@ function writeTableRow(tableRowTarg, initElement, arrayContent, finElement, rowT
   let tableCellNode = document.createElement(rowType);
   let tableCellContent = document.createTextNode(initElement);
   tableCellNode.classList.add('headerColumnCell');
-  //console.log(tableCellNode, tableCellContent);
   tableCellNode.appendChild(tableCellContent);
   elementRowParent.appendChild(tableCellNode);
   //writing to cells in the hourly sales columns
