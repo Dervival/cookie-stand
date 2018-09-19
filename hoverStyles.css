@@ -1,0 +1,27 @@
+.salesTableHeaderRow .headerColumnCell:hover{
+  background: #111111;
+}
+.salesTableHeaderRow .arrayColumnCell:hover{
+  background: #77dddd;
+}
+.salesTableHeaderRow .totalColumnCell:hover{
+  background: #77bbbb;
+}
+.salesTableBodyRow .headerColumnCell:hover{
+  background: #99bbbb;
+}
+.salesTableBodyRow .arrayColumnCell:hover{
+  background: #779999;
+}
+.salesTableBodyRow .totalColumnCell:hover{
+  background: #668888;
+}
+.salesTableFooterRow .headerColumnCell:hover{
+  background: #88bbbb;
+}
+.salesTableFooterRow .arrayColumnCell:hover{
+  background: #669999;
+}
+.salesTableFooterRow .totalColumnCell:hover{
+  background: #447777;
+}

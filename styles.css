@@ -1,21 +1,60 @@
-table, thead, tbody, tr, th, td{
-  align-content: center;
+#salesTable *{
+  padding: 7.5px;
+  box-align: center;
+  text-align: center;
 }
-th.headerColumnCell{
+.salesTableHeaderRow *{
+  border-bottom-left-radius: 80%;
+  border-bottom-right-radius: 80%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  font-size: 24px;
+}
+.salesTableBodyRow *{
+  font-size: 24px;
+}
+.salesTableFooterRow *{
+  font-size: 24px;
+}
+
+* .headerColumnCell{
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 60%;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 60%;
+}
+.salesTableHeaderRow .headerColumnCell{
   background: transparent;
 }
-th.arrayColumnCell{
-  background: green;
+.salesTableHeaderRow .arrayColumnCell{
+  background: #770000;
 }
-th.totalColumnCell{
-  background: orangered;
+.salesTableHeaderRow .totalColumnCell{
+  background: #772222;
 }
-td.headerColumnCell{
-  background: pink;
+.salesTableBodyRow .headerColumnCell{
+  background: #552222;
 }
-td.arrayColumnCell{
-  background: lightgreen;
+.salesTableBodyRow .arrayColumnCell{
+  background: #774444;
+  border-bottom-left-radius: 25%;
+  border-bottom-right-radius: 25%;
+  border-top-left-radius: 25%;
+  border-top-right-radius: 25%;
 }
-td.totalColumnCell{
-  background: orange;
+.salesTableBodyRow .totalColumnCell{
+  background: #996666;
+}
+.salesTableFooterRow .headerColumnCell{
+  background: #663333;
+}
+.salesTableFooterRow .arrayColumnCell{
+  background: #885555;
+}
+.salesTableFooterRow .totalColumnCell{
+  background: #AA7777;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
 }
