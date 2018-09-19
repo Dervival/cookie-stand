@@ -1,57 +1,72 @@
 #salesTable *{
   padding: 7.5px;
-  box-align: center;
   text-align: center;
 }
-.salesTableHeaderRow *{
+
+#salesTable thead tr *{
+  background: #770000;
   border-bottom-left-radius: 80%;
   border-bottom-right-radius: 80%;
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
-  font-size: 24px;
-}
-.salesTableBodyRow *{
-  font-size: 24px;
-}
-.salesTableFooterRow *{
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
   font-size: 24px;
 }
 
-* .headerColumnCell{
-  border-bottom-left-radius: 10%;
-  border-bottom-right-radius: 60%;
-  border-top-left-radius: 10%;
-  border-top-right-radius: 60%;
-}
-.salesTableHeaderRow .headerColumnCell{
+#salesTable thead tr th:first-child{
   background: transparent;
 }
-.salesTableHeaderRow .arrayColumnCell{
-  background: #770000;
-}
-.salesTableHeaderRow .totalColumnCell{
+
+#salesTable thead tr th:last-child{
   background: #772222;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 0%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
 }
-.salesTableBodyRow .headerColumnCell{
-  background: #552222;
-}
-.salesTableBodyRow .arrayColumnCell{
+
+#salesTable tbody tr *{
   background: #774444;
-  border-bottom-left-radius: 25%;
-  border-bottom-right-radius: 25%;
-  border-top-left-radius: 25%;
-  border-top-right-radius: 25%;
+  border-bottom-left-radius: 33%;
+  border-bottom-right-radius: 33%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 33%;
+  font-size: 24px;
 }
-.salesTableBodyRow .totalColumnCell{
+
+#salesTable tbody tr td:first-child{
+  background: #552222;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 50%;
+}
+
+#salesTable tbody tr td:last-child{
   background: #996666;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
 }
-.salesTableFooterRow .headerColumnCell{
-  background: #663333;
-}
-.salesTableFooterRow .arrayColumnCell{
+
+#salesTable tfoot tr *{
   background: #885555;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 50%;
+  font-size: 24px;
 }
-.salesTableFooterRow .totalColumnCell{
+
+#salesTable tfoot tr td:first-child{
+  background: #663333;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 80%;
+}
+
+#salesTable tfoot tr td:last-child{
   background: #AA7777;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;

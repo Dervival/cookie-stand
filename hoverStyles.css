@@ -1,27 +1,31 @@
-.salesTableHeaderRow .headerColumnCell:hover{
-  background: #111111;
+#salesTable thead tr *:hover{
+  background: #88FFFF;
 }
-.salesTableHeaderRow .arrayColumnCell:hover{
-  background: #77dddd;
+
+#salesTable thead tr th:last-child:hover{
+  background: #88DDDD;
 }
-.salesTableHeaderRow .totalColumnCell:hover{
-  background: #77bbbb;
+
+#salesTable tbody tr *:hover{
+  background: #88BBBB;
 }
-.salesTableBodyRow .headerColumnCell:hover{
-  background: #99bbbb;
+
+#salesTable tbody tr td:first-child:hover{
+  background: #AADDDD;
 }
-.salesTableBodyRow .arrayColumnCell:hover{
-  background: #779999;
-}
-.salesTableBodyRow .totalColumnCell:hover{
-  background: #668888;
-}
-.salesTableFooterRow .headerColumnCell:hover{
-  background: #88bbbb;
-}
-.salesTableFooterRow .arrayColumnCell:hover{
+
+#salesTable tbody tr td:last-child:hover{
   background: #669999;
 }
-.salesTableFooterRow .totalColumnCell:hover{
-  background: #447777;
+
+#salesTable tfoot tr *:hover{
+  background: #77AAAA;
+}
+
+#salesTable tfoot tr td:first-child:hover{
+  background: #99CCCC;
+}
+
+#salesTable tfoot tr td:last-child:hover{
+  background: #558888;
 }

@@ -43,47 +43,59 @@ Store.prototype.generateSalesData = function(){
 };
 
 function writeSalesTable(targetElementParent){
+  //REFACTOR THIS INTO generateHead();
   //initial setup of table, thead, tr tags
   var elementParent = targetElementParent;
   var tableNode = document.createElement('table');
   tableNode.id = 'salesTable';
   elementParent.appendChild(tableNode);
   //thead
-  elementParent = document.getElementById('salesTable');
+  // elementParent = document.getElementById('salesTable');
+  elementParent = tableNode;
   var tableHeaderNode = document.createElement('thead');
-  tableHeaderNode.classList.add('salesTableHeader');
+  // tableHeaderNode.classList.add('salesTableHeader');
   elementParent.appendChild(tableHeaderNode);
   //thead tr
   var tableHeaderRowNode = document.createElement('tr');
-  tableHeaderRowNode.classList.add('salesTableHeaderRow');
-  elementParent = document.getElementsByClassName('salesTableHeader')[0];
+  // tableHeaderRowNode.classList.add('salesTableHeaderRow');
+  // elementParent = document.getElementsByClassName('salesTableHeader')[0];
+  elementParent = tableHeaderNode;
   elementParent.appendChild(tableHeaderRowNode);
   //thead tr th
-  elementParent = document.getElementsByClassName('salesTableHeaderRow')[0];
+  //elementParent = document.getElementsByClassName('salesTableHeaderRow')[0];
+  elementParent = tableHeaderRowNode;
   writeTableRow(elementParent, '', hoursOpen, 'Total', 'th');
+
+  //REFACTOR THIS INTO generateBody();
   //tbody
   var tableBodyNode = document.createElement('tbody');
-  tableBodyNode.classList.add('salesTableBody');
-  elementParent = document.getElementById('salesTable');
+  // tableBodyNode.classList.add('salesTableBody');
+  // elementParent = document.getElementById('salesTable');
+  elementParent = tableNode;
   elementParent.appendChild(tableBodyNode);
   //tbody tr
   var tableBodyRowNode;
   for(var rowNum = 0; rowNum < Store.locations.length; rowNum++){
     tableBodyRowNode = document.createElement('tr');
-    tableBodyRowNode.classList.add('salesTableBodyRow');
-    elementParent = document.getElementsByClassName('salesTableBody')[0];
+    //tableBodyRowNode.classList.add('salesTableBodyRow');
+    //  elementParent = document.getElementsByClassName('salesTableBody')[0];
+    elementParent = tableBodyNode;
     elementParent.appendChild(tableBodyRowNode);
     writeTableRow(tableBodyRowNode, Store.locations[rowNum].storeName, Store.locations[rowNum].salesData, Store.locations[rowNum].totalSales, 'td');
   }
+
+  ////REFACTOR THIS INTO generateFoot
   //tfoot
   var tableFooterNode = document.createElement('tfoot');
-  tableFooterNode.classList.add('salesTableFooter');
-  elementParent = document.getElementById('salesTable');
+  // tableFooterNode.classList.add('salesTableFooter');
+  // elementParent = document.getElementById('salesTable');
+  elementParent = tableNode;
   elementParent.appendChild(tableFooterNode);
   //tfoot tr
   var tableFooterRowNode = document.createElement('tr');
-  tableFooterRowNode.classList.add('salesTableFooterRow');
-  elementParent = document.getElementsByClassName('salesTableFooter')[0];
+  // tableFooterRowNode.classList.add('salesTableFooterRow');
+  // elementParent = document.getElementsByClassName('salesTableFooter')[0];
+  elementParent = tableFooterNode;
   elementParent.appendChild(tableFooterRowNode);
   //tfoot tr td - generate hour totals
   var totalHourlyArray = [];
@@ -98,7 +110,8 @@ function writeSalesTable(targetElementParent){
     totalDailySales += hourAccum;
   }
   //tfoot tr tf - write the totals
-  elementParent = document.getElementsByClassName('salesTableFooterRow')[0];
+  //elementParent = document.getElementsByClassName('salesTableFooterRow')[0];
+  elementParent = tableFooterRowNode;
   writeTableRow(elementParent, 'Totals', totalHourlyArray, totalDailySales, 'td');
 
 }
@@ -109,21 +122,21 @@ function writeTableRow(tableRowTarg, initElement, arrayContent, finElement, rowT
   let elementRowParent = tableRowTarg;
   let tableCellNode = document.createElement(rowType);
   let tableCellContent = document.createTextNode(initElement);
-  tableCellNode.classList.add('headerColumnCell');
+  //tableCellNode.classList.add('headerColumnCell');
   tableCellNode.appendChild(tableCellContent);
   elementRowParent.appendChild(tableCellNode);
   //writing to cells in the hourly sales columns
   for(var colNum = 0; colNum < arrayContent.length; colNum++){
     tableCellNode = document.createElement(rowType);
     tableCellContent = document.createTextNode(arrayContent[colNum]);
-    tableCellNode.classList.add('arrayColumnCell');
+    //tableCellNode.classList.add('arrayColumnCell');
     tableCellNode.appendChild(tableCellContent);
     elementRowParent.appendChild(tableCellNode);
   }
   //writing to cells in the total sales column
   tableCellNode = document.createElement(rowType);
   tableCellContent = document.createTextNode(finElement);
-  tableCellNode.classList.add('totalColumnCell');
+  //tableCellNode.classList.add('totalColumnCell');
   tableCellNode.appendChild(tableCellContent);
   elementRowParent.appendChild(tableCellNode);
 }
