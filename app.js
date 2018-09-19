@@ -5,6 +5,8 @@ var minCustArray  = [23, 3, 11, 20, 2];
 var maxCustArray  = [65, 24, 38, 38, 16];
 var avgSaleArray = [6.3, 1.2, 3.7, 2.3, 4.6];
 
+var addStoreForm = document.getElementById('addStoreForm');
+
 var Store = function(storeName, minCust, maxCust, avgSale){
   //hard coded constructor properties
   this.storeName = storeName;
@@ -25,7 +27,7 @@ Store.totalSales = 0;
 
 Store.prototype.generateCustomerData = function(){
   let custFloor = this.minCust;
-  let custRange = this.maxCust - custFloor + 1; //previous off by one error - was non-inclusive of max
+  let custRange = this.maxCust - custFloor + 1;
   return Math.floor((custFloor + ( custRange*Math.random() ) ));
 };
 
@@ -103,7 +105,7 @@ function generateFooter(targetTable){
   }
   //tfoot tr tf - write the totals
   elementParent = tableFooterRowNode;
-  writeTableRow(elementParent, 'Totals', totalHourlyArray, totalDailySales, 'td');
+  writeTableRow(elementParent, 'Hourly Total', totalHourlyArray, totalDailySales, 'td');
 }
 
 function writeTableRow(tableRowTarg, initElement, arrayContent, finElement, rowType){
@@ -138,9 +140,56 @@ for(var i = 0; i < Store.locations.length; i++){
   Store.locations[i].generateSalesData();
   //Store.locations[i].writeToPage();
 }
+
 writeTable(document.body, 'salesTable');
-// console.log(pikeStore);
-// console.log(seatacStore);
-// console.log(seatCentStore);
-// console.log(capHillStore);
-// console.log(alkiStore);
+var salesTable = document.getElementById('salesTable');
+var formIssue = document.getElementById('formIssue');
+function addNewStore(event){
+  event.preventDefault();
+  var newStoreName = event.target.newStoreName.value;
+  var newStoreMinCust = event.target.newStoreMinCust.value;
+  if(parseFloat(newStoreMinCust) >= 0){ //if minCust can't be parsed it turns into a NaN which is not greater to or equal zero
+    newStoreMinCust = parseFloat(newStoreMinCust);
+  }
+  else{
+    formIssue.innerHTML = 'Minimum customers per hour must be a number greater than zero.';
+    return false;
+  }
+  var newStoreMaxCust = event.target.newStoreMaxCust.value;
+  if(parseFloat(newStoreMaxCust) >= newStoreMinCust){
+    newStoreMaxCust = parseFloat(newStoreMaxCust);
+  }
+  else{
+    formIssue.innerHTML = 'Maximum customers per hour must be a number greater than minimum customers per hour.';
+    return false;
+  }
+  var newStoreAvgSale = event.target.newStoreAvgSale.value;
+  if(parseFloat(newStoreAvgSale) >= 0){
+    newStoreAvgSale = parseFloat(newStoreAvgSale);
+  }
+  else{
+    formIssue.innerHTML = 'Average sale per customer must be a number greater than zero.';
+    return false;
+  }
+  new Store(newStoreName,newStoreMinCust,newStoreMaxCust,newStoreAvgSale);
+  Store.locations[Store.locations.length-1].generateCustomerData();
+  Store.locations[Store.locations.length-1].generateSalesData();
+  formIssue.innerHTML = '';
+  salesTable.parentNode.removeChild(salesTable);
+  writeTable(document.body, 'salesTable');
+  salesTable = document.getElementById('salesTable');
+  event.target.newStoreName.value = '';
+  event.target.newStoreMinCust.value = '';
+  event.target.newStoreMaxCust.value = '';
+  event.target.newStoreAvgSale.value = '';
+  return true;
+}
+
+addStoreForm.addEventListener('submit', addNewStore);
+
+
+console.log(pikeStore);
+console.log(seatacStore);
+console.log(seatCentStore);
+console.log(capHillStore);
+console.log(alkiStore);

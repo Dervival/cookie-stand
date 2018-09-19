@@ -8,7 +8,31 @@
 </head>
 
 <body>
-  <script src = 'app.js'></script>
+  <h1>Salmon Cookie Sales Data</h1>
+  <h3 id='formIssue'></h3>
+  <form id='addStoreForm'>
+    <fieldset>
+      <legend>Add a New Store Here!</legend>
+      <label for="newStoreName" id="formName">New Store Location:</label>
+      <input type="text" name="newStoreName" required="required">
+
+      <label for="newStoreMinCust" id="formMinCust">Minimum Customers Per Hour:</label>
+      <input type="text" name="newStoreMinCust" required="required">
+      <br />
+
+      <label for="newStoreMaxCust" id="formMaxCust">Maximum Customers Per Hour:</label>
+      <input type="text" name="newStoreMaxCust" required="required">
+
+      <label for="newStoreAvgSale" id="formAvgSale">Average Numbers of Cookies Bought Per Customer:</label>
+      <input type="text" name="newStoreAvgSale" required="required">
+
+      <button>Create a New Store</button>
+    </fieldset>
+  </form>
 </body>
+
+<footer>
+  <script src = 'app.js'></script>
+</footer>
 
 </html>
