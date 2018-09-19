@@ -130,20 +130,17 @@ function writeTableRow(tableRowTarg, initElement, arrayContent, finElement, rowT
   elementRowParent.appendChild(tableCellNode);
 }
 
-var pikeStore = new Store(storeNames[0],minCustArray[0],maxCustArray[0],avgSaleArray[0]);
-var seatacStore = new Store(storeNames[1],minCustArray[1],maxCustArray[1],avgSaleArray[1]);
-var seatCentStore = new Store(storeNames[2],minCustArray[2],maxCustArray[2],avgSaleArray[2]);
-var capHillStore = new Store(storeNames[3],minCustArray[3],maxCustArray[3],avgSaleArray[3]);
-var alkiStore = new Store(storeNames[4],minCustArray[4],maxCustArray[4],avgSaleArray[4]);
-for(var i = 0; i < Store.locations.length; i++){
+for(var i = 0; i < storeNames.length; i++){
+  new Store(storeNames[i], minCustArray[i], maxCustArray[i], avgSaleArray[i]);
   Store.locations[i].generateCustomerData();
   Store.locations[i].generateSalesData();
-  //Store.locations[i].writeToPage();
 }
 
 writeTable(document.body, 'salesTable');
+
 var salesTable = document.getElementById('salesTable');
 var formIssue = document.getElementById('formIssue');
+
 function addNewStore(event){
   event.preventDefault();
   var newStoreName = event.target.newStoreName.value;
@@ -186,10 +183,3 @@ function addNewStore(event){
 }
 
 addStoreForm.addEventListener('submit', addNewStore);
-
-
-console.log(pikeStore);
-console.log(seatacStore);
-console.log(seatCentStore);
-console.log(capHillStore);
-console.log(alkiStore);

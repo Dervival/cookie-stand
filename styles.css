@@ -1,3 +1,30 @@
+html{
+  background-image: url('./img/salmonBackground.jpg');
+  background-size: cover;
+}
+h1{
+  color: #111111;
+  font-size: 48px;
+  font-weight: bold;
+  -webkit-text-fill: #111111;
+  -webkit-text-stroke-width: 0.2px;
+  -webkit-text-stroke-color: #ee9999;
+}
+#formIssue{
+  color: #111111;
+  font-size: 24px;
+  font-weight: bold;
+  -webkit-text-fill: #111111;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: #ee0000;
+}
+label{
+  color: #111111;
+  font-weight: bold;
+  -webkit-text-fill: #111111;
+  -webkit-text-stroke-width: 0.2px;
+  -webkit-text-stroke-color: #ee9999;
+}
 #salesTable *{
   padding: 7.5px;
   text-align: center;
