@@ -14,15 +14,15 @@ var Store = function(storeName, minCust, maxCust, avgSale){
   this.maxCust = maxCust;
   this.avgSale = avgSale;
   //bases of generated properties
-  this.custData = [];
+  this.laborData = [];
   this.salesData = [];
-  this.totalCust = 0;
+  this.totalLabor = 0;
   this.totalSales = 0;
   Store.locations.push(this);
 };
 
 Store.locations = [];
-Store.totalCust = 0;
+Store.totalLabor = 0;
 Store.totalSales = 0;
 
 Store.prototype.generateCustomerData = function(){
@@ -34,100 +34,132 @@ Store.prototype.generateCustomerData = function(){
 Store.prototype.generateSalesData = function(){
   for(var i = 0; i < hoursOpen.length; i++){
     let hourlyCust = this.generateCustomerData();
-    this.custData.push(hourlyCust);
-    this.totalCust += hourlyCust;
+    console.log('Customers generated: ' + hourlyCust);
+    let hourlyLabor = Math.max(2, Math.floor(hourlyCust/20 + 1));
+    console.log('Labor needed: ' + hourlyLabor);
+    this.laborData.push(hourlyLabor);
+    this.totalLabor += hourlyLabor;
     let hourlySales = Math.floor(hourlyCust*this.avgSale);
+    console.log('Cookies sold: ' + hourlySales);
     this.salesData.push(hourlySales);
     this.totalSales += hourlySales;
   }
 };
 
-function writeTable(targetElementParent, tableId){
+function writeTable(targetElementParent, tableId, type){
   //initial setup of table, thead, tr tags
   var elementParent = targetElementParent;
+  //var tableNodeName = document.createElement('h2');
+  //tableNodeName.id = type;
+  //elementParent.appendChild(tableNodeName);
+  //addElement('h2',type,targetElementParent);
   var tableNode = document.createElement('table');
   tableNode.id = tableId;
   elementParent.appendChild(tableNode);
-  generateHead(tableNode);
-  generateBody(tableNode);
-  generateFooter(tableNode);
+  generateHead(tableNode, type);
+  generateBody(tableNode, type);
+  generateFooter(tableNode, type);
 }
 
-function generateHead(targetTable){
+function generateHead(targetTable, tableType){
   //thead
-  let elementParent = targetTable;
-  let tableHeaderNode = document.createElement('thead');
-  elementParent.appendChild(tableHeaderNode);
+  let addedElement = addElement('thead', '', targetTable);
   //thead tr
-  let tableHeaderRowNode = document.createElement('tr');
-  elementParent = tableHeaderNode;
-  elementParent.appendChild(tableHeaderRowNode);
+  addedElement = addElement('tr','',addedElement);
   //thead tr th
-  elementParent = tableHeaderRowNode;
-  writeTableRow(elementParent, '', hoursOpen, 'Total', 'th');
+  var tableTitle;
+  switch(tableType){
+  case 'sales':
+    tableTitle = 'Sales';
+    break;
+  case 'labor':
+    tableTitle = 'Labor';
+    break;
+  default:
+    tableTitle = '';
+    break;
+  }
+  writeTableRow(addedElement, tableTitle, hoursOpen, 'Total', 'th');
 }
 
-function generateBody(targetTable){
+function generateBody(targetTable, tableType){
   //tbody
-  let elementParent = targetTable;
-  let tableBodyNode = document.createElement('tbody');
-  elementParent.appendChild(tableBodyNode);
+  let childElement = addElement('tbody','',targetTable);
   //tbody tr
-  var tableBodyRowNode;
-  for(var rowNum = 0; rowNum < Store.locations.length; rowNum++){
-    tableBodyRowNode = document.createElement('tr');
-    elementParent = tableBodyNode;
-    elementParent.appendChild(tableBodyRowNode);
-    writeTableRow(tableBodyRowNode, Store.locations[rowNum].storeName, Store.locations[rowNum].salesData, Store.locations[rowNum].totalSales, 'td');
+  var rowNum = 0;
+  switch (tableType){
+  case 'sales':
+    for(rowNum = 0; rowNum < Store.locations.length; rowNum++){
+      let grandChildElement = addElement('tr','',childElement);
+      writeTableRow(grandChildElement, Store.locations[rowNum].storeName, Store.locations[rowNum].salesData, Store.locations[rowNum].totalSales, 'td');
+    }
+    break;
+  case 'labor':
+    for(rowNum = 0; rowNum < Store.locations.length; rowNum++){
+      let grandChildElement = addElement('tr','',childElement);
+      writeTableRow(grandChildElement, Store.locations[rowNum].storeName, Store.locations[rowNum].laborData, Store.locations[rowNum].totalLabor, 'td');
+    }
+    break;
+  default:
+    for(rowNum = 0; rowNum < Store.locations.length; rowNum++){
+      let grandChildElement = addElement('tr','',childElement);
+      writeTableRow(grandChildElement, Store.locations[rowNum].storeName, Store.locations[rowNum].salesData, Store.locations[rowNum].totalSales, 'td');
+    }
+    break;
   }
 }
 
-function generateFooter(targetTable){
+function generateFooter(targetTable, tableType){
   //tfoot
-  let tableFooterNode = document.createElement('tfoot');
-  let elementParent = targetTable;
-  elementParent.appendChild(tableFooterNode);
+  let addedElement = addElement('tfoot','',targetTable);
   //tfoot tr
-  let tableFooterRowNode = document.createElement('tr');
-  elementParent = tableFooterNode;
-  elementParent.appendChild(tableFooterRowNode);
+  addedElement = addElement('tr','',addedElement);
   //tfoot tr td - generate hour totals
   let totalHourlyArray = [];
   let hourAccum = 0;
-  let totalDailySales = 0;
+  let totalDaily = 0;
   for (var hours = 0; hours < hoursOpen.length; hours++){
     hourAccum = 0;
     for (var openStores = 0; openStores < Store.locations.length; openStores++){
-      hourAccum += Store.locations[openStores].salesData[hours];
+      switch (tableType){
+      case 'sales':
+        hourAccum += Store.locations[openStores].salesData[hours];
+        break;
+      case 'labor':
+        hourAccum += Store.locations[openStores].laborData[hours];
+        break;
+      default:
+        hourAccum += Store.locations[openStores].salesData[hours];
+        break;
+      }
     }
     totalHourlyArray.push(hourAccum);
-    totalDailySales += hourAccum;
+    totalDaily += hourAccum;
   }
-  //tfoot tr tf - write the totals
-  elementParent = tableFooterRowNode;
-  writeTableRow(elementParent, 'Hourly Total', totalHourlyArray, totalDailySales, 'td');
+  //tfoot tr td - write the totals
+  writeTableRow(addedElement, 'Hourly Total', totalHourlyArray, totalDaily, 'td');
 }
 
 function writeTableRow(tableRowTarg, initElement, arrayContent, finElement, rowType){
   //Row can be split into three distinct areas - header column, hourly sales, total sales
   //inital setup and writing the cell in the header column
-  let elementRowParent = tableRowTarg;
-  let tableCellNode = document.createElement(rowType);
-  let tableCellContent = document.createTextNode(initElement);
-  tableCellNode.appendChild(tableCellContent);
-  elementRowParent.appendChild(tableCellNode);
+  addElement(rowType,initElement,tableRowTarg);
   //writing to cells in the hourly sales columns
   for(var colNum = 0; colNum < arrayContent.length; colNum++){
-    tableCellNode = document.createElement(rowType);
-    tableCellContent = document.createTextNode(arrayContent[colNum]);
-    tableCellNode.appendChild(tableCellContent);
-    elementRowParent.appendChild(tableCellNode);
+    addElement(rowType,arrayContent[colNum],tableRowTarg);
   }
   //writing to cells in the total sales column
-  tableCellNode = document.createElement(rowType);
-  tableCellContent = document.createTextNode(finElement);
-  tableCellNode.appendChild(tableCellContent);
-  elementRowParent.appendChild(tableCellNode);
+  addElement(rowType,finElement,tableRowTarg);
+}
+
+function addElement(tag,elementContent,parentElement){
+  let newElement = document.createElement(tag);
+  if(elementContent){
+    let newElementContent = document.createTextNode(elementContent);
+    newElement.appendChild(newElementContent);
+  }
+  parentElement.appendChild(newElement);
+  return(newElement);
 }
 
 for(var i = 0; i < storeNames.length; i++){
@@ -136,9 +168,16 @@ for(var i = 0; i < storeNames.length; i++){
   Store.locations[i].generateSalesData();
 }
 
-writeTable(document.body, 'salesTable');
+var tableLocation = document.getElementById('tableLocation');
+writeTable(tableLocation, 'salesTable', 'sales');
+writeTable(tableLocation, 'laborTable', 'labor');
 
+//var salesTableHeader = document.getElementById('sales');
 var salesTable = document.getElementById('salesTable');
+
+//var laborTableHeader = document.getElementById('labor');
+var laborTable = document.getElementById('laborTable');
+
 var formIssue = document.getElementById('formIssue');
 
 function addNewStore(event){
@@ -168,13 +207,24 @@ function addNewStore(event){
     formIssue.innerHTML = 'Average sale per customer must be a number greater than zero.';
     return false;
   }
+
   new Store(newStoreName,newStoreMinCust,newStoreMaxCust,newStoreAvgSale);
   Store.locations[Store.locations.length-1].generateCustomerData();
   Store.locations[Store.locations.length-1].generateSalesData();
   formIssue.innerHTML = '';
+
+  //salesTableHeader.parentNode.removeChild(salesTableHeader);
   salesTable.parentNode.removeChild(salesTable);
-  writeTable(document.body, 'salesTable');
+  writeTable(tableLocation, 'salesTable', 'sales');
+  //salesTableHeader = document.getElementById('sales');
   salesTable = document.getElementById('salesTable');
+
+  //laborTableHeader.parentNode.removeChild(laborTableHeader);
+  laborTable.parentNode.removeChild(laborTable);
+  writeTable(tableLocation, 'laborTable', 'labor');
+  //laborTableHeader = document.getElementById('labor');
+  laborTable = document.getElementById('laborTable');
+
   event.target.newStoreName.value = '';
   event.target.newStoreMinCust.value = '';
   event.target.newStoreMaxCust.value = '';

@@ -10,6 +10,18 @@ h1{
   -webkit-text-stroke-width: 0.2px;
   -webkit-text-stroke-color: #ee9999;
 }
+#sales{
+  color: #111111;
+  font-size: 24px;
+  height: 24px;
+}
+
+#labor{
+  color: #111111;
+  font-size: 24px;
+  height: 24px;
+}
+
 #formIssue{
   color: #111111;
   font-size: 24px;
