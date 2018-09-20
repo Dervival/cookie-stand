@@ -1,0 +1,48 @@
+html{
+  background-image: url('../../img/required-assets/family.jpg');
+  background-repeat: repeat;
+  background-size: 50%;
+}
+
+h2{
+  margin: 12px;
+  color: #222222;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  -webkit-text-fill: #222222;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #ee9999;
+}
+
+p{
+  margin: 6px;
+  color: #dd8888;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  -webkit-text-fill: #dd8888;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #111111;
+}
+
+p strong{
+  color: #dd2222;
+  font-size: 24px;
+  -webkit-text-fill: #dd2222;
+}
+body{
+  max-width: 100%;
+  left: 50%;
+  transform: translate(0%,0%);
+  text-align: center;
+}
+
+body section *{
+  margin: 8px;
+}
+
+table, thead, th, td{
+  border-width: 10px;
+  border-color: black;
+}

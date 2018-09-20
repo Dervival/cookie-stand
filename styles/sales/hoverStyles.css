@@ -29,3 +29,35 @@
 #salesTable tfoot tr td:last-child:hover{
   background: #558888;
 }
+
+#laborTable thead tr *:hover{
+  background: #88FFFF;
+}
+
+#laborTable thead tr th:last-child:hover{
+  background: #88DDDD;
+}
+
+#laborTable tbody tr *:hover{
+  background: #88BBBB;
+}
+
+#laborTable tbody tr td:first-child:hover{
+  background: #AADDDD;
+}
+
+#laborTable tbody tr td:last-child:hover{
+  background: #669999;
+}
+
+#laborTable tfoot tr *:hover{
+  background: #77AAAA;
+}
+
+#laborTable tfoot tr td:first-child:hover{
+  background: #99CCCC;
+}
+
+#laborTable tfoot tr td:last-child:hover{
+  background: #558888;
+}

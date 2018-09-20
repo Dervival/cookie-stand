@@ -2,6 +2,7 @@ html{
   background-image: url('../../img/salmonBackground.jpg');
   background-size: cover;
 }
+
 h1{
   color: #111111;
   font-size: 48px;
@@ -193,4 +194,10 @@ label{
   border-bottom-right-radius: 50%;
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
+}
+#return{
+  max-width: 75%;
+  left: 50%;
+  transform: translate(17.5%,0%);
+  text-align: center;
 }
