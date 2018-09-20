@@ -1,0 +1,59 @@
+html{
+  background-image: url('../../img/indexBackground.jpg');
+  background-size: cover;
+}
+
+h1{
+  margin: 12px;
+  color: #333333;
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  -webkit-text-fill: #333333;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #ee9999;
+}
+
+body{
+  max-width: 75%;
+  left: 50%;
+  transform: translate(17.5%,0%);
+  text-align: center;
+}
+
+body section *{
+  margin: 8px;
+}
+
+#sales h2{
+  margin: 9px;
+  color: #ee9999;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  -webkit-text-fill: #ee9999;
+  -webkit-text-stroke-width: 0.75px;
+  -webkit-text-stroke-color: #333333;
+}
+
+#about-us h2{
+  margin: 9px;
+  color: #aa3333;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  -webkit-text-fill: #aa3333;
+  -webkit-text-stroke-width: 0.75px;
+  -webkit-text-stroke-color: #111111;
+}
+
+#merchandise h2{
+  margin: 9px;
+  color: #111111;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  -webkit-text-fill: #111111;
+  -webkit-text-stroke-width: 0.75px;
+  -webkit-text-stroke-color: #44EEEE;
+}

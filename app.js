@@ -73,7 +73,7 @@ function generateHead(targetTable, tableType){
     tableTitle = 'Sales';
     break;
   case 'labor':
-    tableTitle = 'Labor';
+    tableTitle = 'Employees';
     break;
   default:
     tableTitle = '';
