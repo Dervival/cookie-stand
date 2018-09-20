@@ -26,11 +26,20 @@ p{
   -webkit-text-stroke-color: #111111;
 }
 
+strong{
+  color: #dd2222;
+  font-size: 18px;
+  font-weight: bolder;
+  -webkit-text-fill: #dd2222;
+}
+
 p strong{
   color: #dd2222;
   font-size: 24px;
   -webkit-text-fill: #dd2222;
 }
+
+
 body{
   max-width: 100%;
   left: 50%;
@@ -42,7 +51,68 @@ body section *{
   margin: 8px;
 }
 
-table, thead, th, td{
-  border-width: 10px;
-  border-color: black;
+table {
+  width: 100%;
+}
+
+th{
+  font-weight: bold;
+  font-size: 28px;
+}
+
+table th, table td {
+  margin: 1em;
+  padding: 1em;
+  position: relative;
+  border-left: 0.125em dashed #777777;
+  border-right: 0.125em dashed #777777;
+  border-bottom: 0.25em dashed #777777;
+}
+
+table *:first-child {
+  border-left: 0em solid transparent;
+}
+
+table *:last-child{
+  border-right: 0em solid transparent;
+}
+
+table tr {
+  border-bottom: 1px solid navy;
+  transition: all .1s linear;
+}
+
+table thead tr:first-child {
+  border-bottom: 3px solid navy;
+  color: #dd2222;
+  font-size: 24px;
+  -webkit-text-fill: #dd2222;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #111111;
+}
+
+table tbody tr:hover {
+  background: #777777;
+  color: #111111;
+  -webkit-text-fill: #111111;
+  -webkit-text-stroke: 1px, #eeeeee;
+}
+
+table tfoot tr{
+  border-bottom-color: transparent;
+}
+
+table tfoot tr:hover {
+  background: #ee7777;
+  color: #111111;
+  -webkit-text-fill: #111111;
+  -webkit-text-stroke: 1px, #eeeeee;
+}
+
+h4 *{
+  color: #111111;
+  font-size: 18px;
+  font-weight: bold;
+  -webkit-text-fill: #111111;
+  -webkit-text-stroke: 1px, #eeeeee;
 }
