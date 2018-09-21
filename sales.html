@@ -3,11 +3,48 @@
 
 <head>
   <title>Pat's Sales Data</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles/sales/styles.css" />
+  <link rel="stylesheet" href="styles/sales/hoverStyles.css" />
 </head>
 
 <body>
-  <script src = 'app.js'></script>
+  <header>
+    <h1>Salmon Cookie Sales Data</h1>
+  </header>
+
+  <main>
+    <h3 id='formIssue'></h3>
+    <form id='addStoreForm'>
+      <fieldset>
+        <legend>Add a New Store Here!</legend>
+        <label for="newStoreName" id="formName">New Store Location:</label>
+        <input type="text" name="newStoreName" required="required">
+
+        <label for="newStoreMinCust" id="formMinCust">Minimum Customers Per Hour:</label>
+        <input type="text" name="newStoreMinCust" required="required">
+        <br />
+
+        <label for="newStoreMaxCust" id="formMaxCust">Maximum Customers Per Hour:</label>
+        <input type="text" name="newStoreMaxCust" required="required">
+
+        <label for="newStoreAvgSale" id="formAvgSale">Average Numbers of Cookies Bought Per Customer:</label>
+        <input type="text" name="newStoreAvgSale" required="required">
+
+        <button>Create a New Store</button>
+      </fieldset>
+    </form>
+    <section id='tableLocation'></section>
+    <section id='return'>
+      <a href="index.html">
+        <img src="img/required-assets/chinook.jpg" alt="This is a picture of a chinook salmon." />
+        <p>Click here to return to the index.</p>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <script src = 'app.js'></script>
+  </footer>
 </body>
 
 </html>

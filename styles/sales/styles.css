@@ -1,0 +1,203 @@
+html{
+  background-image: url('../../img/salmonBackground.jpg');
+  background-size: cover;
+}
+
+h1{
+  color: #111111;
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  -webkit-text-fill: #111111;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: #ee9999;
+}
+
+#salesTable{
+  color: #111111;
+  font-size: 24px;
+  height: 24px;
+  margin: 12px;
+}
+
+#laborTable{
+  color: #111111;
+  font-size: 24px;
+  height: 24px;
+  margin: 12px;
+}
+
+#formIssue{
+  color: #111111;
+  font-size: 24px;
+  font-weight: bold;
+  -webkit-text-fill: #111111;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: #ee0000;
+}
+
+label{
+  color: #111111;
+  font-weight: bold;
+  -webkit-text-fill: #111111;
+  -webkit-text-stroke-width: 0.2px;
+  -webkit-text-stroke-color: #ee9999;
+}
+
+#salesTable *{
+  padding: 7.5px;
+  text-align: center;
+}
+
+#salesTable thead tr *{
+  background: #770000;
+  border-bottom-left-radius: 80%;
+  border-bottom-right-radius: 80%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+  font-size: 24px;
+}
+
+#salesTable thead tr th:first-child{
+  background: transparent;
+}
+
+#salesTable thead tr th:last-child{
+  background: #772222;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 0%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+}
+
+#salesTable tbody tr *{
+  background: #774444;
+  border-bottom-left-radius: 33%;
+  border-bottom-right-radius: 33%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 33%;
+  font-size: 24px;
+}
+
+#salesTable tbody tr td:first-child{
+  background: #552222;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 50%;
+}
+
+#salesTable tbody tr td:last-child{
+  background: #996666;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+}
+
+#salesTable tfoot tr *{
+  background: #885555;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 50%;
+  font-size: 24px;
+}
+
+#salesTable tfoot tr td:first-child{
+  background: #663333;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 50%;
+}
+
+#salesTable tfoot tr td:last-child{
+  background: #AA7777;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+
+#laborTable *{
+  padding: 7.5px;
+  text-align: center;
+}
+
+#laborTable thead tr *{
+  background: #881111;
+  border-bottom-left-radius: 80%;
+  border-bottom-right-radius: 80%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+  font-size: 24px;
+}
+
+#laborTable thead tr th:first-child{
+  background: transparent;
+}
+
+#laborTable thead tr th:last-child{
+  background: #994444;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 0%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+}
+
+#laborTable tbody tr *{
+  background: #aa6666;
+  border-bottom-left-radius: 33%;
+  border-bottom-right-radius: 33%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 33%;
+  font-size: 24px;
+}
+
+#laborTable tbody tr td:first-child{
+  background: #774444;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 50%;
+}
+
+#laborTable tbody tr td:last-child{
+  background: #bb8888;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+}
+
+#laborTable tfoot tr *{
+  background: #aa7777;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 50%;
+  font-size: 24px;
+}
+
+#laborTable tfoot tr td:first-child{
+  background: #885555;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 50%;
+}
+
+#laborTable tfoot tr td:last-child{
+  background: #cc9999;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+#return{
+  max-width: 75%;
+  left: 50%;
+  transform: translate(17.5%,0%);
+  text-align: center;
+}
